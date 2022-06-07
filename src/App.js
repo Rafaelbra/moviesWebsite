@@ -4,21 +4,14 @@ import MovieCard from './MovieCard';
 import './App.css';
 import SearchIcon from './search.svg';
 
-const movie1 = {
-    "Title": "Amazing Spiderman Syndrome",
-    "Year": "2012",
-    "imdbID": "tt2586634",
-    "Type": "movie",
-    "Poster": "N/A"
-}
-
 // API Key = 12aee098
 
-const API_URL = 'http://www.omdbapi.com?apikey=12aee098';
+const API_URL = 'https://www.omdbapi.com?apikey=12aee098';
 
 const App = () => {
 
     const [movies, setMovies] = useState([]);
+    console.log(movies)
     const [searchTerm, setSearchTerm] = useState('');
 
     const searchMovie = async (title) => {
@@ -53,8 +46,8 @@ const App = () => {
                 movies?.length > 0
                 ? (
                     <div className = 'container'>
-                        {movies.map((movie) => (
-                            <MovieCard movie ={movie} />
+                        {movies.map((movie, index) => (
+                            <MovieCard key={index} movie ={movie} />
                         ))}
                     </div>
                 ) : (
